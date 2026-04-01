@@ -46,7 +46,7 @@ function Navbar() {
         <div className="hidden md:flex w-1/2">
           <input
             type="text"
-            placeholder="Search for products, brands and more"
+            placeholder="Search for products..."
             className="w-full px-4 py-2 border border-gray-300 rounded-l-md outline-none"
           />
           <button className="bg-blue-600 text-white px-4 rounded-r-md hover:bg-blue-700">
@@ -55,7 +55,7 @@ function Navbar() {
         </div>
 
         {/* RIGHT */}
-        <div className="flex items-center gap-6 relative">
+        <div className="flex items-center gap-4 relative">
 
           {/* CART */}
           <Link
@@ -80,13 +80,12 @@ function Navbar() {
                 👤 {user.name}
               </div>
 
-              {/* DROPDOWN */}
               {showDropdown && (
                 <div className="absolute right-0 mt-3 bg-white text-black shadow-xl rounded-xl w-52 overflow-hidden z-50 border">
 
                   <Link
                     to="/profile"
-                    className="block px-4 py-3 hover:bg-gray-100 transition"
+                    className="block px-4 py-3 hover:bg-gray-100"
                     onClick={() => setShowDropdown(false)}
                   >
                     👤 My Profile
@@ -95,7 +94,7 @@ function Navbar() {
                   {user.isAdmin && (
                     <Link
                       to="/admin"
-                      className="block px-4 py-3 hover:bg-gray-100 transition"
+                      className="block px-4 py-3 hover:bg-gray-100"
                       onClick={() => setShowDropdown(false)}
                     >
                       🛠 Admin Dashboard
@@ -106,7 +105,7 @@ function Navbar() {
 
                   <button
                     onClick={logoutHandler}
-                    className="w-full text-left px-4 py-3 hover:bg-gray-100 text-red-500 transition"
+                    className="w-full text-left px-4 py-3 hover:bg-gray-100 text-red-500"
                   >
                     🚪 Logout
                   </button>
@@ -114,12 +113,21 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <Link
-              to="/login"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Login
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                to="/login"
+                className="px-4 py-2 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition"
+              >
+                Login
+              </Link>
+
+              <Link
+                to="/register"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+              >
+                Register
+              </Link>
+            </div>
           )}
         </div>
       </div>
